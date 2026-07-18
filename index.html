@@ -1,520 +1,615 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+<!--
+================================================================
+
+UNDERDOG CO — PROJECT MISSION DOCUMENTATION
+
+Founder & Vision:
+Dominique created Underdog Co with the belief that animal welfare
+does not begin at surrender. It begins with prevention, compassion,
+resources, and community.
+
+Project Purpose:
+This website exists to keep people and pets together by connecting
+families with resources, education, and support while creating
+sustainable funding through mission-driven merchandise.
+
+Development Note:
+This project was architected collaboratively with AI assistance
+(ChatGPT/OpenAI) under the direction of the founder.
+
+Future developers and AI contributors:
+
+Preserve the mission before adding features.
+
+Underdog Co is not an apparel company that supports animals.
+
+Underdog Co is an animal welfare mission using apparel,
+storytelling, education, and community partnerships as tools.
+
+The product is not the hoodie.
+
+The product is keeping families together.
+
+================================================================
+-->
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UNDERDOG CO — Colorado Animal Welfare Directory &amp; Street Relief Fund</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#211C17;
-    --cream:#F3ECDE;
-    --cream2:#EAE1CC;
-    --denim:#2C4870;
-    --denim-dk:#1B324F;
-    --rust:#B5502F;
-    --gold:#D9A441;
-    --columbine:#6E7CA0;
-    --line: rgba(33,28,23,0.16);
-    --radius: 14px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--cream);
-    color:var(--ink);
-    font-family:'Work Sans', sans-serif;
-    line-height:1.55;
-  }
-  h1,h2,h3,.display{
-    font-family:'Oswald', sans-serif;
-    text-transform:uppercase;
-    letter-spacing:0.02em;
-    margin:0;
-  }
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  a{color:inherit;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
 
-  /* stitched divider */
-  .stitch{
-    height:0;
-    border-top:2px dashed rgba(33,28,23,0.28);
-    margin:0;
-  }
 
-  /* NAV */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:var(--cream);
-    border-bottom:2px dashed rgba(33,28,23,0.28);
-  }
-  .navbar{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1180px;margin:0 auto;}
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Oswald';font-weight:700;font-size:1.15rem;letter-spacing:0.03em;text-decoration:none;color:var(--ink);}
-  .logo img{height:52px;width:auto;display:block;}
-  nav.links{display:flex;gap:26px;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
-  nav.links a{text-decoration:none;border-bottom:2px solid transparent;padding-bottom:3px;}
-  nav.links a:hover{border-color:var(--rust);}
-  .navcta{background:var(--rust);color:var(--cream);padding:9px 18px;border-radius:30px;font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;text-decoration:none;white-space:nowrap;}
-  @media (max-width:820px){ nav.links{display:none;} }
+<title>
+Underdog Co | Keeping Colorado Families & Pets Together
+</title>
 
-  /* HERO */
-  .hero{position:relative;padding:90px 24px 70px;overflow:hidden;}
-  .hero-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;}
-  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
-  .eyebrow{font-family:'IBM Plex Mono';font-size:0.78rem;letter-spacing:0.08em;color:var(--rust);text-transform:uppercase;margin-bottom:14px;display:block;}
-  .hero h1{font-size:clamp(2.4rem,5.4vw,4.1rem);line-height:0.98;color:var(--denim-dk);}
-  .hero h1 span{color:var(--rust);}
-  .hero p.lede{margin-top:22px;font-size:1.08rem;max-width:46ch;color:rgba(33,28,23,0.85);}
-  .hero-ctas{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{display:inline-block;padding:13px 24px;border-radius:30px;font-weight:600;text-decoration:none;font-size:0.9rem;letter-spacing:0.02em;border:none;cursor:pointer;transition:all 0.3s ease;}
-  .btn-primary{background:var(--denim);color:var(--cream);}
-  .btn-primary:hover{background:var(--denim-dk);transform:translateY(-2px);}
-  .btn-ghost{border:2px solid var(--ink);color:var(--ink);background:transparent;}
-  .btn-ghost:hover{background:var(--ink);color:var(--cream);}
 
-  /* SECTION SHELL */
-  section{padding:64px 24px;}
-  .section-head{max-width:640px;margin-bottom:38px;}
-  .section-head .eyebrow{margin-bottom:10px;}
-  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);color:var(--denim-dk);}
-  .section-head p{margin-top:14px;color:rgba(33,28,23,0.8);}
+<meta name="description"
+content="Underdog Co helps Colorado families keep their pets through education, resources, community support, and mission-driven apparel.">
 
-  /* PRODUCT PAGE STYLES */
-  .product-hero{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:50px;
-    align-items:flex-start;
-    margin-top:30px;
-  }
-  @media (max-width:900px){.product-hero{grid-template-columns:1fr;}}
 
-  /* Product Gallery */
-  .product-gallery{
-    background:var(--cream);
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:20px;
-    position:sticky;
-    top:100px;
-  }
-  @media (max-width:900px){.product-gallery{position:static;}}
-  .product-main-image{
-    width:100%;
-    aspect-ratio:1/1;
-    background:var(--ink);
-    border-radius:16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:16px;
-    overflow:hidden;
-  }
-  .product-main-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-  .product-thumbnails{
-    display:flex;
-    gap:10px;
-  }
-  .product-thumb{
-    width:70px;
-    height:70px;
-    border:2px solid var(--line);
-    border-radius:10px;
-    cursor:pointer;
-    overflow:hidden;
-    transition:all 0.3s ease;
-    flex-shrink:0;
-  }
-  .product-thumb:hover{border-color:var(--rust);}
-  .product-thumb.active{border-color:var(--denim);box-shadow:0 0 0 3px rgba(44,72,112,0.15);}
-  .product-thumb img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
+<meta name="keywords"
+content="Colorado animal welfare, pet resources Colorado, keep pets together, animal rescue support, pet assistance">
 
-  /* Product Details */
-  .product-details{
-    padding-bottom:20px;
-  }
-  .product-details h1{
-    font-size:2rem;
-    color:var(--denim-dk);
-    margin-bottom:12px;
-  }
-  .product-price{
-    font-family:'IBM Plex Mono';
-    font-size:1.8rem;
-    font-weight:600;
-    color:var(--rust);
-    margin-bottom:8px;
-  }
-  .product-shipping{
-    font-family:'IBM Plex Mono';
-    font-size:0.85rem;
-    color:rgba(33,28,23,0.65);
-    margin-bottom:24px;
-  }
-  .product-description{
-    font-size:0.95rem;
-    line-height:1.6;
-    color:rgba(33,28,23,0.85);
-    margin-bottom:28px;
-    padding-bottom:28px;
-    border-bottom:1px solid var(--line);
-  }
 
-  /* Size Selector */
-  .size-section h3{
-    font-family:'Oswald';
-    font-size:0.9rem;
-    text-transform:uppercase;
-    letter-spacing:0.05em;
-    margin-bottom:14px;
-  }
-  .size-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-bottom:30px;
-  }
-  @media (max-width:600px){.size-grid{grid-template-columns:repeat(2,1fr);}}
-  .size-btn{
-    padding:12px;
-    border:2px solid var(--line);
-    background:var(--cream);
-    border-radius:8px;
-    font-family:'IBM Plex Mono';
-    font-size:0.85rem;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:0.03em;
-    cursor:pointer;
-    transition:all 0.3s ease;
-  }
-  .size-btn:hover{border-color:var(--denim);background:rgba(44,72,112,0.05);}
-  .size-btn.selected{
-    background:var(--denim);
-    color:var(--cream);
-    border-color:var(--denim);
-  }
+<meta name="author" content="Underdog Co">
 
-  /* Quantity Selector */
-  .quantity-section{
-    display:flex;
-    gap:16px;
-    margin-bottom:30px;
-    align-items:center;
-  }
-  .quantity-label{
-    font-family:'Oswald';
-    font-size:0.9rem;
-    text-transform:uppercase;
-    letter-spacing:0.05em;
-  }
-  .quantity-control{
-    display:flex;
-    border:1px solid var(--line);
-    border-radius:8px;
-    overflow:hidden;
-  }
-  .qty-btn{
-    padding:8px 12px;
-    border:none;
-    background:var(--cream2);
-    font-weight:600;
-    cursor:pointer;
-    transition:all 0.2s ease;
-  }
-  .qty-btn:hover{background:var(--line);}
-  .qty-display{
-    padding:8px 16px;
-    min-width:40px;
-    text-align:center;
-    font-family:'IBM Plex Mono';
-    font-weight:600;
-  }
 
-  /* Add to Cart */
-  .add-to-cart-btn{
-    width:100%;
-    padding:16px;
-    background:var(--rust);
-    color:var(--cream);
-    border:none;
-    border-radius:12px;
-    font-family:'Oswald';
-    font-size:1rem;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-    cursor:pointer;
-    transition:all 0.3s ease;
-    margin-bottom:12px;
-  }
-  .add-to-cart-btn:hover{
-    background:#8b3d23;
-    transform:translateY(-2px);
-    box-shadow:0 8px 16px rgba(181,80,47,0.25);
-  }
-  .add-to-cart-btn:active{transform:translateY(0);}
+<meta property="og:title"
+content="Underdog Co | Keeping Families & Pets Together">
 
-  /* Product Info */
-  .product-info{
-    background:rgba(44,72,112,0.05);
-    border-left:4px solid var(--denim);
-    padding:16px;
-    border-radius:8px;
-    font-size:0.85rem;
-    line-height:1.6;
-    color:rgba(33,28,23,0.8);
-  }
-  .product-info strong{color:var(--denim);}
 
-  /* Toast Notification */
-  .toast{
-    position:fixed;
-    bottom:24px;
-    right:24px;
-    background:var(--denim);
-    color:var(--cream);
-    padding:16px 24px;
-    border-radius:8px;
-    font-family:'IBM Plex Mono';
-    font-size:0.85rem;
-    box-shadow:0 8px 24px rgba(33,28,23,0.2);
-    animation:slideIn 0.3s ease;
-    z-index:100;
-  }
-  @keyframes slideIn{
-    from{transform:translateX(400px);opacity:0;}
-    to{transform:translateX(0);opacity:1;}
-  }
+<meta property="og:description"
+content="A Colorado mission focused on preventing unnecessary pet surrender through resources, education, and community support.">
 
-  /* Footer */
-  footer{background:var(--ink);color:var(--cream);padding:50px 24px 30px;}
-  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px;}
-  @media (max-width:700px){.footer-grid{grid-template-columns:1fr;}}
-  footer h5{font-family:'Oswald';text-transform:uppercase;font-size:0.85rem;letter-spacing:0.04em;margin-bottom:14px;color:var(--gold);}
-  footer p, footer li{font-size:0.84rem;color:rgba(243,236,222,0.75);}
-  footer ul{list-style:none;padding:0;margin:0;}
-  footer li{margin-bottom:8px;}
-  .legal-strip{margin-top:36px;padding-top:20px;border-top:1px solid rgba(243,236,222,0.18);font-size:0.75rem;color:rgba(243,236,222,0.55);}
-</style>
-</head>
-<body>
 
-<header>
-  <div class="navbar">
-    <a href="#top" class="logo">UNDERDOG CO</a>
-    <nav class="links">
-      <a href="#shop">Shop</a>
-      <a href="#mission">Mission</a>
-      <a href="#impact">Impact</a>
-    </nav>
-    <a href="#cart" class="navcta">Cart</a>
-  </div>
-</header>
+<link rel="stylesheet" href="css/style.css">
 
-<div class="hero" id="top">
-  <div class="hero-grid">
-    <div>
-      <span class="eyebrow">// Colorado-founded, street-level, dog-tag honest</span>
-      <h1>Every animal<br>has a <span>tag.</span><br>Every org<br>tells the truth.</h1>
-      <p class="lede">UNDERDOG CO is a Colorado directory of animal welfare organizations — plus a homeless &amp; at-risk pet owner relief fund, built by someone who's slept in her car with her dog rather than give him up.</p>
-      <div class="hero-ctas">
-        <a href="#shop" class="btn btn-primary">Shop the collection</a>
-      </div>
-    </div>
-    <div style="text-align:center;">
-      <img src="underdog-co-logo.jpg" alt="Underdog CO logo" style="max-width:300px;border-radius:22px;box-shadow:0 26px 50px rgba(33,28,23,0.24);transform:rotate(-2deg);">
-    </div>
-  </div>
-</div>
 
-<div class="stitch"></div>
+<script type="application/ld+json">
 
-<!-- SHOP SECTION -->
-<section id="shop">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow mono">// The collection</span>
-      <h2>Wear your mission. Support animals &amp; people.</h2>
-      <p>Every purchase supports Colorado animal welfare organizations and provides relief funding for homeless &amp; at-risk pet owners. 100% of profits go directly to the cause.</p>
-    </div>
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"Underdog Co",
+ "description":"Colorado organization supporting families and pets through animal welfare resources and community support.",
+ "areaServed":"Colorado",
+ "foundingDate":"2026"
+}
 
-    <!-- PRODUCT: "Don't Be Greedy" Hoodie -->
-    <div class="product-hero">
-      <!-- Gallery -->
-      <div class="product-gallery">
-        <div class="product-main-image">
-          <img id="mainImage" src="hoodie-front.jpg" alt="Don't Be Greedy Hoodie - Front View">
-        </div>
-        <div class="product-thumbnails">
-          <div class="product-thumb active" onclick="changeImage(this, 'hoodie-front.jpg')">
-            <img src="hoodie-front.jpg" alt="Front view">
-          </div>
-          <div class="product-thumb" onclick="changeImage(this, 'hoodie-back.jpg')">
-            <img src="hoodie-back.jpg" alt="Back view">
-          </div>
-        </div>
-      </div>
-
-      <!-- Details -->
-      <div class="product-details">
-        <h1>Don't Be Greedy Hoodie</h1>
-        <div class="product-price">$55 USD</div>
-        <div class="product-shipping">🚚 Ships within the US • Free shipping on orders over $100</div>
-
-        <div class="product-description">
-          <strong>Feed the need.</strong> This hoodie carries a message that hits different when you've been there—when you know what it's like to choose between feeding yourself or your dog. Millions of people face that choice. Compassion starts in your community. Support. Don't hoard. Everyone deserves a full bowl.
-        </div>
-
-        <!-- Size Selection -->
-        <div class="size-section">
-          <h3>Select Size</h3>
-          <div class="size-grid">
-            <button class="size-btn" onclick="selectSize(this, 'XS')">XS</button>
-            <button class="size-btn" onclick="selectSize(this, 'S')">S</button>
-            <button class="size-btn" onclick="selectSize(this, 'M')">M</button>
-            <button class="size-btn" onclick="selectSize(this, 'L')">L</button>
-            <button class="size-btn" onclick="selectSize(this, 'XL')">XL</button>
-            <button class="size-btn" onclick="selectSize(this, '2XL')">2XL</button>
-            <button class="size-btn" onclick="selectSize(this, '3XL')">3XL</button>
-            <button class="size-btn" onclick="selectSize(this, '4XL')">4XL</button>
-          </div>
-          <p id="sizeError" style="color:var(--rust);font-size:0.85rem;margin-top:10px;display:none;">⚠ Please select a size</p>
-        </div>
-
-        <!-- Quantity -->
-        <div class="quantity-section">
-          <div class="quantity-label">Quantity</div>
-          <div class="quantity-control">
-            <button class="qty-btn" onclick="decreaseQty()">−</button>
-            <div class="qty-display" id="qtyDisplay">1</div>
-            <button class="qty-btn" onclick="increaseQty()">+</button>
-          </div>
-        </div>
-
-        <!-- Add to Cart -->
-        <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
-
-        <!-- Product Info -->
-        <div class="product-info">
-          <strong>Material:</strong> 100% pre-shrunk cotton blend hoodie<br>
-          <strong>Print:</strong> White embroidered design on black<br>
-          <strong>Fit:</strong> Unisex, true to size<br>
-          <strong>Care:</strong> Machine wash cold, tumble dry low<br><br>
-          <strong>Shipping:</strong> Free shipping on US orders over $100
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="stitch"></div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h5>UNDERDOG CO</h5>
-        <p>A Colorado-founded relief fund &amp; directory for animal welfare organizations. Built by someone who chose their dog over a roof.</p>
-      </div>
-      <div>
-        <h5>Shop</h5>
-        <ul>
-          <li><a href="#shop" style="color:inherit;text-decoration:none;">Hoodie Collection</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Coming Soon</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Support</h5>
-        <ul>
-          <li><a href="mailto:hello@underdogco.org" style="color:inherit;text-decoration:none;">Contact Us</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="legal-strip">
-      © 2026 UNDERDOG CO. All proceeds support Colorado animal welfare &amp; homeless pet owner relief.
-    </div>
-  </div>
-</footer>
-
-<script>
-  let selectedSize = null;
-  let quantity = 1;
-
-  function selectSize(element, size) {
-    selectedSize = size;
-    document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('selected'));
-    element.classList.add('selected');
-    document.getElementById('sizeError').style.display = 'none';
-  }
-
-  function increaseQty() {
-    quantity++;
-    document.getElementById('qtyDisplay').textContent = quantity;
-  }
-
-  function decreaseQty() {
-    if (quantity > 1) {
-      quantity--;
-      document.getElementById('qtyDisplay').textContent = quantity;
-    }
-  }
-
-  function changeImage(thumbElement, imageSrc) {
-    document.getElementById('mainImage').src = imageSrc;
-    document.querySelectorAll('.product-thumb').forEach(thumb => thumb.classList.remove('active'));
-    thumbElement.classList.add('active');
-  }
-
-  function addToCart() {
-    if (!selectedSize) {
-      document.getElementById('sizeError').style.display = 'block';
-      return;
-    }
-
-    // Create cart data
-    const cartItem = {
-      product: 'Don\'t Be Greedy Hoodie',
-      size: selectedSize,
-      quantity: quantity,
-      price: 55,
-      total: 55 * quantity
-    };
-
-    // Store in localStorage (for now)
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(cartItem);
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    // Show toast notification
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = `✓ Added ${quantity}x ${selectedSize} hoodie to cart`;
-    document.body.appendChild(toast);
-
-    setTimeout(() => toast.remove(), 3000);
-
-    // Reset form
-    quantity = 1;
-    selectedSize = null;
-    document.getElementById('qtyDisplay').textContent = '1';
-    document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('selected'));
-  }
 </script>
 
+
+</head>
+
+
+
+<body>
+
+
+<header class="site-header">
+
+<nav class="navbar">
+
+<a class="logo" href="index.html">
+UNDERDOG CO
+</a>
+
+
+<div class="nav-links">
+
+<a href="#mission">
+Mission
+</a>
+
+<a href="#resources">
+Resources
+</a>
+
+<a href="#shop">
+Shop
+</a>
+
+<a href="#impact">
+Impact
+</a>
+
+</div>
+
+
+<a href="cart.html" class="cart-button">
+
+Cart
+<span id="cart-count">0</span>
+
+</a>
+
+
+</nav>
+
+</header>
+
+
+
+
+
+<main>
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+<p class="eyebrow">
+COLORADO • COMMUNITY • ANIMAL WELFARE
+</p>
+
+
+
+<h1>
+
+KEEP FAMILIES.
+<br>
+
+KEEP PETS.
+
+<br>
+
+TOGETHER.
+
+</h1>
+
+
+
+<p class="hero-text">
+
+Underdog Co helps Colorado families access resources,
+support, and education before surrender becomes their
+only option.
+
+</p>
+
+
+
+<div class="hero-buttons">
+
+
+<a href="#resources"
+class="btn primary">
+
+GET PET HELP
+
+</a>
+
+
+<a href="#shop"
+class="btn secondary">
+
+SHOP THE MISSION
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+<div class="hero-image">
+
+<img 
+src="assets/images/logo.webp"
+alt="Underdog Co logo"
+loading="lazy">
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section id="mission" class="section">
+
+
+<div class="section-header">
+
+<p class="eyebrow">
+WHY WE EXIST
+</p>
+
+
+<h2>
+BEFORE GOODBYE
+</h2>
+
+</div>
+
+
+
+<div class="mission-box">
+
+
+<p>
+
+Every day, families walk into shelters carrying
+the weight of an impossible decision.
+
+</p>
+
+
+<p>
+
+Not because they stopped loving their animals.
+
+</p>
+
+
+<p>
+
+Because life changed.
+
+</p>
+
+
+<ul>
+
+<li>
+Housing challenges
+</li>
+
+<li>
+Unexpected medical bills
+</li>
+
+<li>
+Financial hardship
+</li>
+
+<li>
+Limited access to resources
+</li>
+
+</ul>
+
+
+
+<p>
+
+Underdog Co exists in the space before surrender.
+
+The moment where compassion, resources, and community
+can change the ending.
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section id="resources" class="section alt">
+
+
+<div class="section-header">
+
+<p class="eyebrow">
+COMMUNITY SUPPORT
+</p>
+
+
+<h2>
+PET RESOURCES
+</h2>
+
+
+<p>
+
+Need help keeping your pet?
+
+We are building a Colorado resource network
+to connect families with support.
+
+</p>
+
+
+</div>
+
+
+
+<div class="resource-grid">
+
+
+<div class="resource-card">
+
+<h3>
+Veterinary Help
+</h3>
+
+<p>
+Low-cost care, vaccine clinics, and emergency resources.
+</p>
+
+</div>
+
+
+
+<div class="resource-card">
+
+<h3>
+Food Assistance
+</h3>
+
+<p>
+Resources for families struggling to keep bowls full.
+</p>
+
+</div>
+
+
+
+
+<div class="resource-card">
+
+<h3>
+Housing Support
+</h3>
+
+<p>
+Helping families navigate pet-friendly housing options.
+</p>
+
+</div>
+
+
+
+
+<div class="resource-card">
+
+<h3>
+Behavior Support
+</h3>
+
+<p>
+Education and resources that prevent unnecessary surrender.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section id="shop" class="section">
+
+
+<div class="section-header">
+
+<p class="eyebrow">
+THE STAY TOGETHER COLLECTION
+</p>
+
+
+<h2>
+WEAR THE MISSION
+</h2>
+
+
+<p>
+
+Every purchase supports the creation of resources
+for families fighting to keep their pets.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="product-card">
+
+
+<img
+src="assets/products/dont-be-greedy-front.webp"
+alt="Don't Be Greedy Hoodie"
+loading="lazy">
+
+
+
+<div>
+
+
+<h3>
+Don't Be Greedy Hoodie
+</h3>
+
+
+<p>
+
+A reminder that compassion means making sure
+everybody gets a full bowl.
+
+</p>
+
+
+
+<p class="price">
+
+$55
+
+</p>
+
+
+<button 
+class="btn primary add-product"
+data-product="Don't Be Greedy Hoodie"
+data-price="55">
+
+ADD TO CART
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section id="impact" class="section alt">
+
+
+<div class="section-header">
+
+<p class="eyebrow">
+THE GOAL
+</p>
+
+
+<h2>
+BUILDING SOMETHING BIGGER
+</h2>
+
+
+</div>
+
+
+
+<div class="impact-text">
+
+
+<p>
+
+Underdog Co is building a future where families
+don't have to lose their pets because they lost
+stability.
+
+</p>
+
+
+<p>
+
+Through storytelling, education, partnerships,
+and sustainable funding, we believe animal welfare
+starts with community care.
+
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<section class="founder section">
+
+
+<h2>
+THE UNDERDOG STORY
+</h2>
+
+
+<p>
+
+Built by someone who has seen animal welfare
+from the inside — someone who understands that
+behind every surrender is a person, a story,
+and often a family trying their best.
+
+</p>
+
+
+</section>
+
+
+
+</main>
+
+
+
+
+
+
+<footer>
+
+
+<h3>
+UNDERDOG CO
+</h3>
+
+
+<p>
+Keeping families and pets together.
+</p>
+
+
+
+<p>
+© 2026 Underdog Co
+</p>
+
+
+</footer>
+
+
+
+
+
+
+<script src="js/main.js"></script>
+
+
 </body>
+
+
 </html>
